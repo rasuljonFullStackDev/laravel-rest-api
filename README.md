@@ -102,7 +102,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 <p>
 <b>app.js add</b>
 
-<b> axios.defaults.baseURL = 'https://test-api.rasuljon.uz'; </b>
+<b> axios.defaults.baseURL = 'https://test-api.rasuljon.uz/api/cars'; </b>
 
 <b> axios.defaults.headers.common['Authorization'] = 'Bearer token'; </b>
 

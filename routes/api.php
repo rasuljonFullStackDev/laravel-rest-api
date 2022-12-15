@@ -29,11 +29,9 @@ Route::post('cars/edit/{id}',[CarsController::class,'edit']);
 Route::post('cars/delete/{id}',[CarsController::class,'delete']);
 Route::post('login',[AuthController::class,'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('lock/edit',[AuthController::class,'lock']);
-    Route::post('email/reset',[AuthController::class,'sendEmail']);
     Route::get('user',[AuthController::class,'user']);
+    Route::post('user/delete',[AuthController::class,'deleteaccount']);
     Route::post('user/edit/',[AuthController::class,'useredit']);
     Route::post('user/password-change/',[AuthController::class,'passwordChange']);
     Route::post('logout',[AuthController::class,'logout']);
-    Route::post('email',[AuthController::class,'emailAuth']);
 });

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Mail\SignUp;
 use App\Models\User;
-use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,21 +15,14 @@ class AuthController extends Controller
 {
     //
     public function register(Request $request){
-        $validationMessages = array('mail_uz'=>'mail_uz',"mail_ru"=>'mail_ru',"mail_en"=>'mail_en');
         $validator = Validator::make($request->all(), [
-            "last_name" => "required|min:0|max:10000",
+            "last_name" => "required",
             "first_name" => "required",
             "email" => "required|email",
             "phone" => "required",
             "login" => "required",
             "password" => "required",
             "adress" => "required",
-        ],[
-            "last_name.min" => "Lastname ",
-            "last_name.max" => $validationMessages["mail_".$request->headers->get('lang')] ,
-            "first_name.require" => "First Name is required",
-            "email.require" => "Email is required",
-            "phone.require" => "Phone is required",
         ]);
         $userEmail = User::where(['email' => $request->input("email")])->get() ;
         if ($validator->fails()) {
@@ -47,9 +38,6 @@ class AuthController extends Controller
                 $user->phone = $request->input("phone");
                 $user->login = $request->input("login");
                 $user->adress = $request->input("adress");
-                $user->valute ='';
-                $user->type =false;
-                $user->auth =false;
                 $user->img ='users/users.svg';
                 $user->password = Hash::make($request->input("password"));
                 $user->save();
@@ -90,61 +78,40 @@ class AuthController extends Controller
     }
     public function user(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::user() ?? "not logged in";
         return $user;
     }
-     public function emailAuth(Request $request)
-     {
-         $userId = Auth::user()->id;
-         if($userId){
-            $user = User::find($userId);
-            $user->valute = $request->input("valute") ?? '';
-            $user->lock = $request->input("lock") ?? '';
-            $user->auth = $request->input("auth") ?? false;
-            $user->save();
-            return response()->json([
-                "status"=>200,
-                'lock'=>$user->lock,
-                "user"=>$user]);
-         }
-    }
-     public function lock(Request $request)
-     {
-         $userId = Auth::user()->id;
-         if($userId){
-            $user = User::find($userId);
-            $user->lock = $request->input("lock") ?? '';
-            $user->save();
-            return response()->json([
-                "status"=>200,
-                'lock'=>$user->lock,
-                "user"=>$user]);
-         }
-    }
 
-    public function send($mail_data){
-        $detil = [
-            'title'=>"sdasjkldjsad",
-            "body" => "sadasdsad12331"
-        ];
-        // \Mail::to('tursunboyevabdurasuldevolop@gmail.com')->send(new sendEmail($detil));
-    }
-    public function sendEmail(){
-        // $email = Auth::user()->email;
-        $name = 'tursunboyevabdurasuldevolop@gmail.com';
-        Mail::to($name)->send(new SignUp($name));
-    }
 
     public function logout(Request $request)
     {
-        // auth()->user()->tokens()->delete();
         $request->user()->currentAccessToken()->delete();
         return response()->json([
             'status'=>200,
             'massage'=>'Profilgan chiqildi'
         ]);
     }
-
+// delete accunt
+    public function deleteaccount(Request $request){
+    $id = Auth::user()->id;
+        $user = Cars::find($id);
+        if($user){
+            $user->delete();
+            $path = $user->img;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            return response()->json([
+                'status'=>200,
+                'xabar'=>'Account delete!'
+            ]);
+        }else{
+            return response()->json([
+                'status'=>404,
+                'xabar'=>'Account not found!'
+            ]);
+        }
+    }
     // profile edit
     public function useredit(Request $request){
         $id = Auth::user()->id;
@@ -182,7 +149,7 @@ class AuthController extends Controller
         $oldpas = $request->new_password===$request->con_new_password ? $request->old_password : '';
         $passwords = Hash::check($oldpas,$user->password) ?? false;
         if(!$passwords){
-            return response()->json(["xatolik" => "malumot turida xatolik bor", "status" => 400,'message' => "Parol noto'g'ri kiritilgan $oldpas" ]);
+            return response()->json(["xatolik" => "malumot turida xatolik bor", "status" => 400,'message' => "Parol noto'g'ri kiritilgan" ]);
         }else{
             $user->password = Hash::make($request->input("new_password")) ;
             $user->save();

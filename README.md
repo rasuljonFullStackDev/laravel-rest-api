@@ -15,51 +15,56 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 <h1>Auth</h1>
 
-<h2>URL: https://test-api.rasuljon.uz/api</h2>
+<h2>URL: 
+    <a href=""  target='_blank'>
+        https://test-api.rasuljon.uz/api
+    </a>
+</h2>
 
 <h3>Route</h3>
 
 ##Register user
+
 <p>
-    <a href="https://test-api.rasuljon.uz/api/register">/register</a> 
+    <a target='_blank' href="https://test-api.rasuljon.uz/api/register">/register</a> 
     <b>   Request method :"post"   </b>
 </p>
 ## login
 <p>
-    <a href="https://test-api.rasuljon.uz/api/login">/login</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/login">/login</a> 
     <b>   Request method :"post"   </b>
 </p>
 
 ## auth successful
+
 <h3>User data</h3>
 
 <p>
-    <a href="https://test-api.rasuljon.uz/api/user">/user</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/user">/user</a> 
     <b>   Request method :"get"   </b>
 </p>
 <h3>User data edit</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/user/edit">/user/edit</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/user/edit">/user/edit</a> 
     <b>   Request method :"post"   </b>
 </p>
 <h3>User password chanage</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/user/password-change/">/user/password-change</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/user/password-change/">/user/password-change</a> 
     <b>   Request method :"post"   </b>
 </p>
 
 <h3>User logout</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/logout">/user/password-change</a> 
+    <a   target='_blank' href="https://test-api.rasuljon.uz/api/logout">/user/password-change</a> 
     <b>   Request method :"post"   </b>
 </p>
 
 <h3>User account delete</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/user/delete">/user/delete</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/user/delete">/user/delete</a> 
     <b>   Request method :"post"   </b>
 </p>
-
 
 ## Cars crud
 
@@ -67,27 +72,39 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 <h3>cars add</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/cars/add">/cars/add</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/cars/add">/cars/add</a> 
     <b>   Request method :"post"   </b>
 </p>
 <h3>cars read</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/cars">/cars</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/cars">/cars</a> 
     <b>   Request method :"get"   </b>
 </p>
 
 <h3>cars edit</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/cars/edit/id">/cars/edit/id</a> 
+    <a  target='_blank' href="https://test-api.rasuljon.uz/api/cars/edit/id">/cars/edit/id</a> 
     
     <b>   Request method :"post"   </b>
 </p>
 <h3>cars delete</h3>
 <p>
-    <a href="https://test-api.rasuljon.uz/api/cars/delete/id">/cars/delete/id</a> 
+    <a   target='_blank' href="https://test-api.rasuljon.uz/api/cars/delete/id">/cars/delete/id</a> 
     <b>   Request method :"delete"   </b>
     
 </p>
+
+## React js rest-api connection
+
+<a href="https://axios-http.com/docs/intro">Axios</a>
+
+## auth token laravel and react js
+
+<h3>
+<b>app.js add</b>
+axios.defaults.baseURL = 'https://test-api.rasuljon.uz';
+axios.defaults.headers.common['Authorization'] = 'Bearer token';
+</h3>
 
 -   [Simple, fast routing engine](https://laravel.com/docs/routing).
 -   [Powerful dependency injection container](https://laravel.com/docs/container).

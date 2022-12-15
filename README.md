@@ -84,7 +84,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 <h3>cars edit</h3>
 <p>
     <a  target='_blank' href="https://test-api.rasuljon.uz/api/cars/edit/id">/cars/edit/id</a> 
-    
     <b>   Request method :"post"   </b>
 </p>
 <h3>cars delete</h3>
@@ -100,11 +99,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## auth token laravel and react js
 
-<h3>
+<p>
 <b>app.js add</b>
+
 axios.defaults.baseURL = 'https://test-api.rasuljon.uz';
 axios.defaults.headers.common['Authorization'] = 'Bearer token';
-</h3>
+
+</p>
 
 -   [Simple, fast routing engine](https://laravel.com/docs/routing).
 -   [Powerful dependency injection container](https://laravel.com/docs/container).

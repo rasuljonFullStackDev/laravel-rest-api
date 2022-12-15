@@ -22,12 +22,13 @@ Route::get('/test1', function () {
     return 'salom';
 });
 Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+// Crud
 Route::post('cars/add',[CarsController::class,'add']);
 Route::get('cars',[CarsController::class,'get']);
 Route::get('cars/{id}',[CarsController::class,'get']);
 Route::post('cars/edit/{id}',[CarsController::class,'edit']);
 Route::post('cars/delete/{id}',[CarsController::class,'delete']);
-Route::post('login',[AuthController::class,'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('user',[AuthController::class,'user']);
     Route::post('user/delete',[AuthController::class,'deleteaccount']);
